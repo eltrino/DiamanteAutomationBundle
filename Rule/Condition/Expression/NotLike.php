@@ -19,8 +19,10 @@ namespace Diamante\AutomationBundle\Rule\Condition\Expression;
 use Diamante\AutomationBundle\Rule\Condition\AbstractCondition;
 use Diamante\AutomationBundle\Rule\Fact\AbstractFact;
 
-class Lte extends AbstractCondition
+class NotLike extends AbstractCondition
 {
+    const MODE = 'soft';
+
     /**
      * @param AbstractFact $fact
      *
@@ -30,6 +32,6 @@ class Lte extends AbstractCondition
     {
         $actualValue = $this->getActualValue($fact);
 
-        return $actualValue <= $this->context->getExpectedValue();
+        return false === stripos($actualValue, $this->context->getExpectedValue());
     }
 }

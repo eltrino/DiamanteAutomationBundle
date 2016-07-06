@@ -13,23 +13,32 @@
  * to license@eltrino.com so we can send you a copy immediately.
  */
 
-namespace Diamante\AutomationBundle\Rule\Condition\Expression;
+namespace Diamante\AutomationBundle\Twig\Filters;
 
-
-use Diamante\AutomationBundle\Rule\Condition\AbstractCondition;
-use Diamante\AutomationBundle\Rule\Fact\AbstractFact;
-
-class NotContains extends AbstractCondition
+class UpperCaseFilter extends \Twig_Extension
 {
-    /**
-     * @param AbstractFact $fact
-     *
-     * @return bool
-     */
-    public function isSatisfiedBy(AbstractFact $fact)
+    public function getFilters()
     {
-        $actualValue = $this->extractPropertyValue($fact);
+        return array(
+            new \Twig_SimpleFilter('ucfirst', array($this, 'upperCaseFirst')),
+        );
+    }
 
-        return false === strpos($actualValue, $this->expectedValue);
+    /**
+     * @param string $input
+     *
+     * @return string
+     */
+    public function upperCaseFirst($input)
+    {
+        return ucfirst($input);
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'diamante_upper_case_extension';
     }
 }
