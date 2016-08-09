@@ -17,11 +17,11 @@ namespace Diamante\AutomationBundle\Api\Command;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class BusinessRuleCommand
+ * Class TimeTriggeredRuleCommand
  *
  * @package Diamante\AutomationBundle\Api\Command
  */
-class BusinessRuleCommand extends WorkflowRuleCommand
+class TimeTriggeredRuleCommand extends EventTriggeredRuleCommand
 {
     /**
      * @var string

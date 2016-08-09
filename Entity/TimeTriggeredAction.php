@@ -20,10 +20,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */
-class WorkflowAction extends Action
+class TimeTriggeredAction extends Action
 {
     /**
-     * @ORM\ManyToOne(targetEntity="WorkflowRule", inversedBy="actions")
+     * @ORM\ManyToOne(targetEntity="TimeTriggeredRule", inversedBy="actions")
      * @ORM\JoinColumn(name="rule_id", referencedColumnName="id")
      */
     protected $rule;
